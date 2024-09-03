@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
-        /* Alle allgemeinen Stile hier wie bei der index.html */
         * {
             margin: 0;
             padding: 0;
@@ -97,6 +96,17 @@
             font-size: 1rem;
             color: #A8B2D1;
         }
+        .team .team-member img {
+            border-radius: 50%;
+            margin-bottom: 20px;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+        .team .team-member p.bio {
+            font-size: 0.9rem;
+            color: #CCD6F6;
+        }
         @media (max-width: 992px) {
             .navbar ul {
                 flex-direction: column;
@@ -141,12 +151,16 @@
         <h2>Unser Team</h2>
         <div class="team-container">
             <div class="team-member scroll-animate">
+                <img src="paul.jpg" alt="Paul Böhmerle">
                 <h3>Paul Böhmerle</h3>
-                <p>Paul ist unser leitender Entwickler mit einem scharfen Auge für Details und einer Leidenschaft für sauberen, effizienten Code.</p>
+                <p>Paul ist der technische Kopf unseres Teams und sorgt dafür, dass alle Projekte reibungslos umgesetzt werden. Als leidenschaftlicher Entwickler liebt er es, neue Technologien zu erforschen und innovative Lösungen zu entwickeln. Neben der Schule verbringt Paul seine Zeit gerne mit Programmieren und Gaming.</p>
+                <p class="bio">Sein Lieblingssatz: "Das kriegen wir schon hin!"</p>
             </div>
             <div class="team-member scroll-animate">
+                <img src="rafael.jpg" alt="Rafael Rüetschi">
                 <h3>Rafael Rüetschi</h3>
-                <p>Rafael ist unser kreativer Kopf und verantwortlich für das Design. Er sorgt dafür, dass Ihre Website nicht nur funktioniert, sondern auch großartig aussieht.</p>
+                <p>Rafael ist unser kreativer Denker und sorgt dafür, dass unsere Designs sowohl funktional als auch ästhetisch ansprechend sind. Er bringt frische Ideen ein und stellt sicher, dass jedes Projekt einzigartig ist. Wenn er nicht an Projekten arbeitet, genießt Rafael das Zeichnen und das Erstellen digitaler Kunst.</p>
+                <p class="bio">Sein Motto: "Es gibt immer Raum für Kreativität."</p>
             </div>
         </div>
     </section>
