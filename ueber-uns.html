@@ -80,6 +80,39 @@
             transform: translateY(50px);
             animation: fadeInUp 1.5s ease-out forwards;
         }
+        .about p.mission {
+            font-size: 1rem;
+            color: #CCD6F6;
+            margin-top: 10px;
+        }
+        .about .team-values {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        .about .value-item {
+            background-color: #0A192F;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+        .about .value-item:hover {
+            transform: translateY(-10px);
+        }
+        .about .value-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .about .value-item p {
+            font-size: 1rem;
+            color: #A8B2D1;
+        }
         @media (max-width: 992px) {
             .navbar ul {
                 flex-direction: column;
@@ -90,6 +123,13 @@
             }
             .about p {
                 font-size: 1rem;
+            }
+            .about .team-values {
+                flex-direction: column;
+                align-items: center;
+            }
+            .about .value-item {
+                width: 100%;
             }
         }
         @keyframes fadeInUp {
@@ -119,7 +159,21 @@
     <section class="about">
         <h2>Über WebCrafter</h2>
         <p>WebCrafter ist eine moderne Web-Agentur, die gegründet wurde, um Unternehmen dabei zu unterstützen, ihre Online-Präsenz zu maximieren. Unser Expertenteam, bestehend aus erfahrenen Entwicklern und Designern, arbeitet unermüdlich daran, maßgeschneiderte Lösungen zu bieten, die sowohl technisch als auch ästhetisch auf höchstem Niveau sind.</p>
-        <p>Unser Ansatz basiert auf einer engen Zusammenarbeit mit unseren Kunden, um sicherzustellen, dass jedes Projekt präzise auf deren Bedürfnisse abgestimmt ist. Wir glauben an transparente Kommunikation und langfristige Partnerschaften, die auf Vertrauen und Erfolg aufgebaut sind.</p>
+        <p class="mission">Unsere Mission ist es, digitale Erlebnisse zu schaffen, die inspirieren und begeistern. Dabei setzen wir auf innovative Technologien und kreative Ansätze, um die bestmöglichen Ergebnisse für unsere Kunden zu erzielen.</p>
+        <div class="team-values">
+            <div class="value-item scroll-animate">
+                <h3>Unsere Werte</h3>
+                <p>Bei WebCrafter legen wir großen Wert auf Qualität, Transparenz und Kundenzufriedenheit. Diese Prinzipien sind das Fundament unseres Handelns und bestimmen jede Entscheidung, die wir treffen.</p>
+            </div>
+            <div class="value-item scroll-animate">
+                <h3>Unsere Vision</h3>
+                <p>Unsere Vision ist es, die führende Agentur für maßgeschneiderte Weblösungen zu werden. Wir streben danach, innovative und effektive digitale Produkte zu entwickeln, die einen echten Mehrwert bieten.</p>
+            </div>
+            <div class="value-item scroll-animate">
+                <h3>Unsere Philosophie</h3>
+                <p>Wir glauben an die Kraft von Zusammenarbeit und Kommunikation. Durch enge Zusammenarbeit mit unseren Kunden stellen wir sicher, dass jedes Projekt erfolgreich und zielgerichtet abgeschlossen wird.</p>
+            </div>
+        </div>
     </section>
 
     <footer class="footer scroll-animate">
