@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
+        /* Alle allgemeinen Stile hier wie bei der index.html */
         * {
             margin: 0;
             padding: 0;
@@ -21,7 +22,7 @@
         }
         .navbar {
             width: 100%;
-            padding: 20px 50px;
+            padding: 20px 20px;
             position: fixed;
             top: 0;
             left: 0;
@@ -41,23 +42,25 @@
         .navbar ul {
             list-style: none;
             display: flex;
+            flex-wrap: wrap;
         }
         .navbar ul li {
-            margin-left: 30px;
+            margin-left: 20px;
         }
         .navbar ul li a {
             text-decoration: none;
             color: #FFFFFF;
             font-size: 1rem;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
         .navbar ul li a:hover {
             color: #64FFDA;
+            transform: scale(1.1);
         }
         .contact {
-            padding: 120px 50px;
-            background-color: #112240;
+            padding: 100px 50px;
             text-align: center;
+            background-color: #112240;
         }
         .contact h2 {
             font-size: 2.5rem;
@@ -70,35 +73,25 @@
         .contact form {
             max-width: 600px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
             opacity: 0;
             transform: translateY(50px);
             animation: fadeInUp 1.5s ease-out forwards;
         }
-        .contact form .form-group {
+        .contact form input, .contact form textarea {
             margin-bottom: 20px;
-        }
-        .contact form .form-group label {
-            display: block;
-            font-size: 1.1rem;
-            color: #A8B2D1;
-            margin-bottom: 5px;
-        }
-        .contact form .form-group input,
-        .contact form .form-group textarea {
-            width: 100%;
-            padding: 10px;
+            padding: 15px;
             font-size: 1rem;
             color: #0A192F;
-            background-color: #64FFDA;
             border: none;
             border-radius: 5px;
         }
-        .contact form .form-group textarea {
-            resize: none;
-            height: 150px;
+        .contact form input::placeholder, .contact form textarea::placeholder {
+            color: #888;
         }
         .contact form button {
-            padding: 15px 30px;
+            padding: 15px;
             font-size: 1rem;
             color: #0A192F;
             background-color: #64FFDA;
@@ -112,14 +105,17 @@
             color: #64FFDA;
             border: 2px solid #64FFDA;
         }
-        .footer {
-            padding: 20px 50px;
-            background-color: #0A192F;
-            text-align: center;
-            color: #A8B2D1;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 1s ease-out forwards;
+        @media (max-width: 992px) {
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .navbar ul li {
+                margin: 10px 0;
+            }
+            .contact form {
+                width: 100%;
+            }
         }
         @keyframes fadeInUp {
             from {
@@ -129,11 +125,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-        @media (max-width: 992px) {
-            .navbar, .contact, .footer {
-                padding: 20px;
             }
         }
     </style>
@@ -152,25 +143,36 @@
 
     <section class="contact">
         <h2>Kontaktieren Sie uns</h2>
-        <form action="https://formspree.io/f/xexample" method="POST">
-            <div class="form-group">
-                <label for="name">Ihr Name</label>
-                <input type="text" id="name" name="name" placeholder="Geben Sie Ihren Namen ein" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Ihre E-Mail</label>
-                <input type="email" id="email" name="email" placeholder="Geben Sie Ihre E-Mail-Adresse ein" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Ihre Nachricht</label>
-                <textarea id="message" name="message" placeholder="Schreiben Sie Ihre Nachricht" required></textarea>
-            </div>
+        <form action="https://formspree.io/f/xblrwpyz" method="POST">
+            <input type="text" name="name" placeholder="Ihr Name" required>
+            <input type="email" name="_replyto" placeholder="Ihre E-Mail" required>
+            <textarea name="message" placeholder="Ihre Nachricht" rows="5" required></textarea>
             <button type="submit">Nachricht senden</button>
         </form>
     </section>
 
-    <footer class="footer">
+    <footer class="footer scroll-animate">
         <p>&copy; 2024 WebCrafter - Alle Rechte vorbehalten</p>
     </footer>
+
+    <script>
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.scroll-animate');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('visible');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+
+        // Trigger the scroll animation on page load
+        window.onload = revealOnScroll;
+    </script>
 </body>
 </html>
