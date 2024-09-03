@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
+        /* Alle allgemeinen Stile hier wie bei der index.html */
         * {
             margin: 0;
             padding: 0;
@@ -21,7 +22,7 @@
         }
         .navbar {
             width: 100%;
-            padding: 20px 50px;
+            padding: 20px 20px;
             position: fixed;
             top: 0;
             left: 0;
@@ -41,23 +42,25 @@
         .navbar ul {
             list-style: none;
             display: flex;
+            flex-wrap: wrap;
         }
         .navbar ul li {
-            margin-left: 30px;
+            margin-left: 20px;
         }
         .navbar ul li a {
             text-decoration: none;
             color: #FFFFFF;
             font-size: 1rem;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
         .navbar ul li a:hover {
             color: #64FFDA;
+            transform: scale(1.1);
         }
         .services {
-            padding: 120px 50px;
-            background-color: #112240;
+            padding: 100px 50px;
             text-align: center;
+            background-color: #112240;
         }
         .services h2 {
             font-size: 2.5rem;
@@ -74,7 +77,7 @@
         }
         .services .service-item {
             background-color: #0A192F;
-            padding: 40px;
+            padding: 20px;
             border-radius: 10px;
             width: 30%;
             margin-bottom: 30px;
@@ -92,22 +95,28 @@
             margin-bottom: 20px;
         }
         .services .service-item h3 {
-            font-size: 1.5rem;
-            color: #FFFFFF;
-            margin-bottom: 15px;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
         }
         .services .service-item p {
             font-size: 1rem;
             color: #A8B2D1;
         }
-        .footer {
-            padding: 20px 50px;
-            background-color: #0A192F;
-            text-align: center;
-            color: #A8B2D1;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 1s ease-out forwards;
+        @media (max-width: 992px) {
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .navbar ul li {
+                margin: 10px 0;
+            }
+            .services .service-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .services .service-item {
+                width: 100%;
+            }
         }
         @keyframes fadeInUp {
             from {
@@ -117,18 +126,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-        @media (max-width: 992px) {
-            .navbar, .services, .footer {
-                padding: 20px;
-            }
-            .services .service-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .services .service-item {
-                width: 100%;
             }
         }
     </style>
@@ -148,26 +145,46 @@
     <section class="services">
         <h2>Unsere Dienstleistungen</h2>
         <div class="service-container">
-            <div class="service-item">
+            <div class="service-item scroll-animate">
                 <i class="fas fa-laptop-code"></i>
                 <h3>Webentwicklung</h3>
-                <p>Wir entwickeln leistungsstarke, maßgeschneiderte Websites, die Ihren Geschäftserfolg maximieren. Von responsiven Designs bis hin zu komplexen Backend-Systemen – wir decken das gesamte Spektrum der Webentwicklung ab.</p>
+                <p>Wir entwickeln leistungsstarke, responsive Websites, die speziell auf Ihre Geschäftsanforderungen zugeschnitten sind. Unser Fokus liegt auf Stabilität, Skalierbarkeit und modernster Technologie.</p>
             </div>
-            <div class="service-item">
+            <div class="service-item scroll-animate">
                 <i class="fas fa-paint-brush"></i>
                 <h3>Webdesign</h3>
-                <p>Unsere Designs verbinden Ästhetik mit Funktionalität. Wir schaffen digitale Erlebnisse, die Ihre Besucher begeistern und Ihre Markenidentität stärken.</p>
+                <p>Unser kreatives Team gestaltet benutzerfreundliche und visuell ansprechende Designs, die Ihre Marke hervorheben und Ihre Besucher begeistern.</p>
             </div>
-            <div class="service-item">
+            <div class="service-item scroll-animate">
                 <i class="fas fa-search"></i>
                 <h3>SEO-Optimierung</h3>
-                <p>Durch gezielte Suchmaschinenoptimierung (SEO) erhöhen wir die Sichtbarkeit Ihrer Website, damit Sie von Ihrer Zielgruppe gefunden werden und Ihre Online-Präsenz nachhaltig wächst.</p>
+                <p>Wir optimieren Ihre Website für Suchmaschinen, um sicherzustellen, dass Ihre Zielgruppe Sie leicht findet und Ihre Reichweite maximiert wird.</p>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer scroll-animate">
         <p>&copy; 2024 WebCrafter - Alle Rechte vorbehalten</p>
     </footer>
+
+    <script>
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.scroll-animate');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('visible');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+
+        // Trigger the scroll animation on page load
+        window.onload = revealOnScroll;
+    </script>
 </body>
 </html>
