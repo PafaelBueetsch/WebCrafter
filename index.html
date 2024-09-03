@@ -24,7 +24,7 @@
         }
         .navbar {
             width: 100%;
-            padding: 20px;
+            padding: 20px 20px;
             position: fixed;
             top: 0;
             left: 0;
@@ -44,7 +44,7 @@
         .navbar ul {
             list-style: none;
             display: flex;
-            margin-left: auto;
+            flex-wrap: wrap;
         }
         .navbar ul li {
             margin-left: 20px;
@@ -53,38 +53,11 @@
             text-decoration: none;
             color: #FFFFFF;
             font-size: 1rem;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
         .navbar ul li a:hover {
             color: #64FFDA;
-        }
-        .menu-icon {
-            display: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #64FFDA;
-        }
-        @media (max-width: 992px) {
-            .menu-icon {
-                display: block;
-            }
-            .navbar ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                background-color: rgba(10, 25, 47, 0.95);
-                z-index: 100;
-            }
-            .navbar ul.active {
-                display: flex;
-            }
-            .navbar ul li {
-                margin: 10px 0;
-                text-align: center;
-            }
+            transform: scale(1.1);
         }
         .hero {
             width: 100%;
@@ -96,7 +69,6 @@
             padding: 0 20px;
             background: linear-gradient(135deg, #0A192F 0%, #112240 100%);
             background-attachment: fixed;
-            overflow: hidden;
         }
         .hero h1 {
             font-size: 2.5rem;
@@ -110,7 +82,7 @@
             font-size: 1.1rem;
             margin-bottom: 40px;
             color: #A8B2D1;
-            max-width: 600px;
+            max-width: 90%;
             margin-left: auto;
             margin-right: auto;
             opacity: 0;
@@ -161,6 +133,9 @@
             font-size: 2rem;
             color: #FFFFFF;
             margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out forwards;
         }
         .services .service-container {
             display: flex;
@@ -174,6 +149,9 @@
             width: 30%;
             margin-bottom: 30px;
             transition: transform 0.3s;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1.5s ease-out forwards;
         }
         .services .service-item:hover {
             transform: translateY(-10px);
@@ -201,6 +179,9 @@
             font-size: 2rem;
             color: #FFFFFF;
             margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out forwards;
         }
         .about p {
             font-size: 1.1rem;
@@ -208,6 +189,9 @@
             max-width: 90%;
             margin: 0 auto;
             margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1.5s ease-out forwards;
         }
         .cta {
             padding: 80px 50px;
@@ -218,6 +202,9 @@
             font-size: 2rem;
             color: #FFFFFF;
             margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out forwards;
         }
         .cta a {
             padding: 15px 30px;
@@ -228,6 +215,9 @@
             border-radius: 5px;
             text-decoration: none;
             transition: background-color 0.3s, color 0.3s;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1.5s ease-out forwards;
         }
         .cta a:hover {
             background-color: #0A192F;
@@ -239,16 +229,44 @@
             background-color: #0A192F;
             text-align: center;
             color: #A8B2D1;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        @media (max-width: 992px) {
+            .navbar, .services, .about, .cta, .footer {
+                padding: 20px;
+            }
+            .services .service-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .services .service-item {
+                width: 100%;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .cta h2, .services h2, .about h2 {
+                font-size: 1.8rem;
+            }
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .navbar ul li {
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <a href="index.html" class="logo">WebCrafter</a>
-        <div class="menu-icon" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-        <ul id="menu">
+        <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="team.html">Team</a></li>
             <li><a href="dienstleistungen.html">Dienstleistungen</a></li>
@@ -268,17 +286,17 @@
     <section class="services scroll-animate">
         <h2>Unsere Dienstleistungen</h2>
         <div class="service-container">
-            <div class="service-item">
+            <div class="service-item scroll-animate">
                 <i class="fas fa-laptop-code"></i>
                 <h3>Webentwicklung</h3>
                 <p>Wir entwickeln leistungsstarke, responsive Websites, die speziell auf Ihre Geschäftsanforderungen zugeschnitten sind. Unser Fokus liegt auf Stabilität, Skalierbarkeit und modernster Technologie.</p>
             </div>
-            <div class="service-item">
+            <div class="service-item scroll-animate">
                 <i class="fas fa-paint-brush"></i>
                 <h3>Webdesign</h3>
                 <p>Unser kreatives Team gestaltet benutzerfreundliche und visuell ansprechende Designs, die Ihre Marke hervorheben und Ihre Besucher begeistern.</p>
             </div>
-            <div class="service-item">
+            <div class="service-item scroll-animate">
                 <i class="fas fa-search"></i>
                 <h3>SEO-Optimierung</h3>
                 <p>Wir optimieren Ihre Website für Suchmaschinen, um sicherzustellen, dass Ihre Zielgruppe Sie leicht findet und Ihre Reichweite maximiert wird.</p>
@@ -297,16 +315,11 @@
         <a href="kontakt.html">Kontaktieren Sie uns</a>
     </section>
 
-    <footer class="footer">
+    <footer class="footer scroll-animate">
         <p>&copy; 2024 WebCrafter - Alle Rechte vorbehalten</p>
     </footer>
 
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.classList.toggle('active');
-        }
-
         function revealOnScroll() {
             const reveals = document.querySelectorAll('.scroll-animate');
             for (let i = 0; i < reveals.length; i++) {
@@ -321,6 +334,9 @@
         }
 
         window.addEventListener('scroll', revealOnScroll);
+
+        // Trigger the scroll animation on page load
+        window.onload = revealOnScroll;
     </script>
 </body>
 </html>
