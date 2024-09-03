@@ -58,6 +58,12 @@
         .navbar ul li a:hover {
             color: #64FFDA;
         }
+        .menu-icon {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #64FFDA;
+        }
         .hero {
             width: 100%;
             min-height: 100vh;
@@ -224,15 +230,25 @@
             animation: fadeInUp 1s ease-out forwards;
         }
         @media (max-width: 992px) {
-            .navbar, .services, .about, .cta, .footer {
+            .navbar {
                 padding: 20px;
             }
-            .services .service-container {
+            .navbar ul {
                 flex-direction: column;
                 align-items: center;
-            }
-            .services .service-item {
+                display: none;
                 width: 100%;
+            }
+            .navbar ul.active {
+                display: flex;
+            }
+            .navbar ul li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            .menu-icon {
+                display: block;
             }
             .hero h1 {
                 font-size: 2rem;
@@ -243,20 +259,16 @@
             .cta h2, .services h2, .about h2 {
                 font-size: 1.8rem;
             }
-            .navbar ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            .navbar ul li {
-                margin: 10px 0;
-            }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <a href="index.html" class="logo">WebCrafter</a>
-        <ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul id="menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="team.html">Team</a></li>
             <li><a href="dienstleistungen.html">Dienstleistungen</a></li>
@@ -308,5 +320,12 @@
     <footer class="footer">
         <p>&copy; 2024 WebCrafter - Alle Rechte vorbehalten</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
