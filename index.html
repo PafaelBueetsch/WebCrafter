@@ -24,7 +24,7 @@
         }
         .navbar {
             width: 100%;
-            padding: 20px;
+            padding: 20px 20px;
             position: fixed;
             top: 0;
             left: 0;
@@ -74,6 +74,7 @@
             padding: 0 20px;
             background: linear-gradient(135deg, #0A192F 0%, #112240 100%);
             background-attachment: fixed;
+            overflow: hidden;
         }
         .hero h1 {
             font-size: 2.5rem;
@@ -120,6 +121,15 @@
                 transform: translateY(0);
             }
         }
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         .services {
             padding: 80px 50px;
             background-color: #112240;
@@ -129,9 +139,6 @@
             font-size: 2rem;
             color: #FFFFFF;
             margin-bottom: 50px;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 1s ease-out forwards;
         }
         .services .service-container {
             display: flex;
@@ -145,9 +152,6 @@
             width: 30%;
             margin-bottom: 30px;
             transition: transform 0.3s;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 1.5s ease-out forwards;
         }
         .services .service-item:hover {
             transform: translateY(-10px);
@@ -175,9 +179,6 @@
             font-size: 2rem;
             color: #FFFFFF;
             margin-bottom: 50px;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 1s ease-out forwards;
         }
         .about p {
             font-size: 1.1rem;
@@ -185,9 +186,6 @@
             max-width: 90%;
             margin: 0 auto;
             margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 1.5s ease-out forwards;
         }
         .cta {
             padding: 80px 50px;
@@ -198,9 +196,6 @@
             font-size: 2rem;
             color: #FFFFFF;
             margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 1s ease-out forwards;
         }
         .cta a {
             padding: 15px 30px;
@@ -211,9 +206,6 @@
             border-radius: 5px;
             text-decoration: none;
             transition: background-color 0.3s, color 0.3s;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 1.5s ease-out forwards;
         }
         .cta a:hover {
             background-color: #0A192F;
@@ -225,9 +217,6 @@
             background-color: #0A192F;
             text-align: center;
             color: #A8B2D1;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 1s ease-out forwards;
         }
         @media (max-width: 992px) {
             .navbar ul {
@@ -285,7 +274,7 @@
         </div>
     </section>
 
-    <section class="services">
+    <section class="services scroll-animate">
         <h2>Unsere Dienstleistungen</h2>
         <div class="service-container">
             <div class="service-item">
@@ -306,13 +295,13 @@
         </div>
     </section>
 
-    <section class="about">
+    <section class="about scroll-animate">
         <h2>Über WebCrafter</h2>
         <p>WebCrafter ist eine moderne Web-Agentur, die gegründet wurde, um Unternehmen dabei zu unterstützen, ihre Online-Präsenz zu maximieren. Unser Expertenteam, bestehend aus erfahrenen Entwicklern und Designern, arbeitet unermüdlich daran, maßgeschneiderte Lösungen zu bieten, die sowohl technisch als auch ästhetisch auf höchstem Niveau sind.</p>
         <p>Unser Ansatz basiert auf einer engen Zusammenarbeit mit unseren Kunden, um sicherzustellen, dass jedes Projekt präzise auf deren Bedürfnisse abgestimmt ist. Wir glauben an transparente Kommunikation und langfristige Partnerschaften, die auf Vertrauen und Erfolg aufgebaut sind.</p>
     </section>
 
-    <section class="cta">
+    <section class="cta scroll-animate">
         <h2>Bereit, Ihr Projekt zu starten?</h2>
         <a href="kontakt.html">Kontaktieren Sie uns</a>
     </section>
@@ -326,6 +315,21 @@
             const menu = document.getElementById('menu');
             menu.classList.toggle('active');
         }
+
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.scroll-animate');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('visible');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
     </script>
 </body>
 </html>
